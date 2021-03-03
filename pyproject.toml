@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "medical-ts-datasets"
-version = "0.1.0"
+version = "0.1.2"
 description = ""
 authors = ["Max Horn <max.horn@bsse.ethz.ch>"]
 

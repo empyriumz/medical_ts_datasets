@@ -128,11 +128,18 @@ class Mimic3Mortality(MedicalTsDatasetBuilder):
             citation=_CITATION
         )
 
-    def _split_generators(self, dl_manager: tfds.download.DownloadManager):
+    def _split_generators(self, dl_manager):
         """Return SplitGenerators."""
+        download_dir = "/host/tf_datasets"
+        extract_dir = "/host/tf_datasets"
+        manual_dir = "/host/tf_datasets"
+        dl_manager = tfds.download.DownloadManager(download_dir=download_dir,
+                    extract_dir=extract_dir,
+                    manual_dir=manual_dir)
         data_file = join(
             dl_manager.manual_dir, 'mimic_benchmarking_mortality.tar.gz')
         extracted_path = dl_manager.extract(data_file)
+        extracted_path = join(extracted_path, "mimic3_mortality")
         train_dir = join(extracted_path, 'train')
         train_listfile = join(extracted_path, 'train_listfile.csv')
         val_dir = train_dir
